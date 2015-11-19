@@ -1,0 +1,7 @@
+{
+  "name": "angular-showhide-bug",
+  "dependencies": {
+    "angular": "1.4.*"
+  }
+}
+

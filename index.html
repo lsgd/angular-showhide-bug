@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="showhide-bug">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div ng-controller="BugCtrl">
+    <h1>Inline HTML</h1>
+    <div ng-repeat="iface in interfaces">
+        <strong>{{iface.name}}</strong>
+        <span ng-show="iface.connected">connected</span>
+        <span ng-hide="iface.connected">disconnected</span>
+    </div>
+</div>
+
+<hr />
+
+<div ng-controller="BugCtrl">
+    <h1>ngInclude</h1>
+    <div ng-repeat="iface in interfaces">
+        <strong>{{iface.name}}</strong>
+        <div ng-include="tpl.connected.html"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript">
+angular.module('showhide-bug', [])
+  .controller('BugCtrl', function($scope) {
+    $scope.interfaces = [
+        {
+            "name": "Wifi",
+            "connected": true
+        },
+        {
+            "name": "Lan",
+            "connected": true,
+        }
+    ];
+  });
+</script>
+</body>
+</html>
